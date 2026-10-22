@@ -19,7 +19,7 @@ import type { Book } from '@/types';
 export type CoverSource = 'camera' | 'library';
 
 /** La API acepta hasta 700 000 caracteres en base64 (~520 KB de imagen). */
-export const MAX_BASE64_LENGTH = 700_000;
+const MAX_BASE64_LENGTH = 700_000;
 const COVER_WIDTH = 600;
 /** Se prueban calidades decrecientes hasta que entre en el límite. */
 const QUALITIES = [0.7, 0.5, 0.35, 0.2];

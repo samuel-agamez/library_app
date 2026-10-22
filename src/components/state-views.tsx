@@ -51,6 +51,31 @@ export function ErrorView({ message, onRetry }: { message: string; onRetry: () =
   );
 }
 
+type ListStatus = 'loading' | 'ready' | 'empty' | 'error';
+
+/** Estado de una lista vacía: cargando, error con reintento o mensaje de vacío. */
+export function ListStateView({
+  status,
+  error,
+  onRetry,
+  loading,
+  emptyTitle,
+  emptyMessage,
+}: {
+  status: ListStatus;
+  error: string | null;
+  onRetry: () => void;
+  loading: string;
+  emptyTitle: string;
+  emptyMessage: string;
+}) {
+  if (status === 'loading') return <LoadingView message={loading} />;
+  if (status === 'error') {
+    return <ErrorView message={error ?? 'Error desconocido'} onRetry={onRetry} />;
+  }
+  return <EmptyView title={emptyTitle} message={emptyMessage} />;
+}
+
 const styles = StyleSheet.create({
   center: {
     flex: 1,

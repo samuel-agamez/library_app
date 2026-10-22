@@ -15,7 +15,7 @@ const STATUS_LABEL: Record<LoanStatus, string> = {
   returned: 'Devuelto',
 };
 
-export function actionsFor(status: LoanStatus): LoanAction[] {
+function actionsFor(status: LoanStatus): LoanAction[] {
   if (status === 'requested') return ['approve', 'reject'];
   if (status === 'approved') return ['return'];
   return [];

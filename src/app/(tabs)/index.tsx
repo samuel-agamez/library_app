@@ -12,7 +12,7 @@ import {
 import { BookCard } from '@/components/book-views';
 import { ConnectionBanner } from '@/components/connection-banner';
 import { Screen } from '@/components/screen';
-import { EmptyView, ErrorView, LoadingView } from '@/components/state-views';
+import { ListStateView } from '@/components/state-views';
 import { ThemedText } from '@/components/themed-text';
 import { BottomTabInset, Spacing } from '@/constants/theme';
 import { useBooks, useCategories } from '@/hooks/use-library-data';
@@ -102,20 +102,18 @@ export default function BooksScreen() {
           />
         }
         ListEmptyComponent={
-          status === 'loading' ? (
-            <LoadingView message="Cargando catálogo…" />
-          ) : status === 'error' ? (
-            <ErrorView message={lastError ?? 'Error desconocido'} onRetry={() => void syncNow()} />
-          ) : (
-            <EmptyView
-              title={filtering ? 'Sin resultados' : 'El catálogo está vacío'}
-              message={
-                filtering
-                  ? 'Prueba con otro título, autor o categoría.'
-                  : 'Aún no hay libros registrados.'
-              }
-            />
-          )
+          <ListStateView
+            status={status}
+            error={lastError}
+            onRetry={() => void syncNow()}
+            loading="Cargando catálogo…"
+            emptyTitle={filtering ? 'Sin resultados' : 'El catálogo está vacío'}
+            emptyMessage={
+              filtering
+                ? 'Prueba con otro título, autor o categoría.'
+                : 'Aún no hay libros registrados.'
+            }
+          />
         }
       />
     </Screen>

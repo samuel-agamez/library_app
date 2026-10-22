@@ -1,4 +1,4 @@
-﻿{
+{
   "expo": {
     "name": "Biblioteca",
     "slug": "library_app",
@@ -40,7 +40,7 @@
       [
         "expo-image-picker",
         {
-          "cameraPermission": "Biblioteca usa la cÃ¡mara para tomar la foto de portada de un libro.",
+          "cameraPermission": "Biblioteca usa la cámara para tomar la foto de portada de un libro.",
           "photosPermission": "Biblioteca accede a tus fotos solo cuando eliges una portada.",
           "microphonePermission": false
         }

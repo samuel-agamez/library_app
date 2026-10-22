@@ -38,7 +38,7 @@ export interface SyncDeps {
 }
 
 /** Explica al usuario, en lenguaje claro, por qué el servidor rechazó una solicitud. */
-export function conflictMessage(err: ApiRequestError): string {
+function conflictMessage(err: ApiRequestError): string {
   switch (err.code) {
     case 'ALREADY_ACTIVE':
       return 'Ya tenías una solicitud o un préstamo activo de este libro.';

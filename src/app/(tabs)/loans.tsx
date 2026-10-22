@@ -4,7 +4,7 @@ import { Alert, FlatList, Pressable, RefreshControl, StyleSheet, View } from 're
 import { ConnectionBanner } from '@/components/connection-banner';
 import { LoanCard } from '@/components/loan-card';
 import { Screen } from '@/components/screen';
-import { EmptyView, ErrorView, LoadingView } from '@/components/state-views';
+import { ListStateView } from '@/components/state-views';
 import { ThemedText } from '@/components/themed-text';
 import { BottomTabInset, Spacing } from '@/constants/theme';
 import { useLoans } from '@/hooks/use-library-data';
@@ -101,20 +101,18 @@ export default function LoansScreen() {
           />
         }
         ListEmptyComponent={
-          status === 'loading' ? (
-            <LoadingView message="Cargando préstamos…" />
-          ) : status === 'error' ? (
-            <ErrorView message={lastError ?? 'Error desconocido'} onRetry={() => void syncNow()} />
-          ) : (
-            <EmptyView
-              title={librarian ? 'Nada por gestionar' : 'Aún no has solicitado libros'}
-              message={
-                librarian
-                  ? 'Las nuevas solicitudes aparecerán aquí.'
-                  : 'Entra a un libro y pulsa “Solicitar préstamo”.'
-              }
-            />
-          )
+          <ListStateView
+            status={status}
+            error={lastError}
+            onRetry={() => void syncNow()}
+            loading="Cargando préstamos…"
+            emptyTitle={librarian ? 'Nada por gestionar' : 'Aún no has solicitado libros'}
+            emptyMessage={
+              librarian
+                ? 'Las nuevas solicitudes aparecerán aquí.'
+                : 'Entra a un libro y pulsa “Solicitar préstamo”.'
+            }
+          />
         }
       />
     </Screen>

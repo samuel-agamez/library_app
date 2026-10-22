@@ -40,7 +40,7 @@ export interface BookFilters {
   category?: string | null;
 }
 
-export function createBooksRepo(db: SQLiteDatabase) {
+function createBooksRepo(db: SQLiteDatabase) {
   return {
     /** Inserta o actualiza (upsert) en una sola transacción: o entran todos o ninguno. */
     async upsertMany(books: Book[]): Promise<void> {
@@ -144,7 +144,7 @@ const toLoan = (r: LoanRow): LocalLoan => ({
   syncError: r.sync_error,
 });
 
-export function createLoansRepo(db: SQLiteDatabase) {
+function createLoansRepo(db: SQLiteDatabase) {
   async function insert(loan: Loan, syncState: SyncState, syncError: string | null) {
     await db.runAsync(
       `INSERT OR REPLACE INTO loans (id, book_id, book_title, user_id, user_email, user_name, status,
@@ -273,7 +273,7 @@ interface OutboxRow {
   created_at: string;
 }
 
-export function createOutboxRepo(db: SQLiteDatabase) {
+function createOutboxRepo(db: SQLiteDatabase) {
   return {
     async enqueue(kind: OutboxItem['kind'], payload: OutboxItem['payload']): Promise<void> {
       await db.runAsync(
@@ -322,7 +322,7 @@ export function createOutboxRepo(db: SQLiteDatabase) {
 
 // ───────────────────────────── Metadatos y bitácora ─────────────────────────────
 
-export function createMetaRepo(db: SQLiteDatabase) {
+function createMetaRepo(db: SQLiteDatabase) {
   return {
     async get(key: string): Promise<string | null> {
       const row = await db.getFirstAsync<{ value: string }>(
@@ -351,7 +351,7 @@ export interface ActivityEntry {
   createdAt: string;
 }
 
-export function createActivityRepo(db: SQLiteDatabase) {
+function createActivityRepo(db: SQLiteDatabase) {
   return {
     /** Nunca registrar tokens, contraseñas ni datos personales en la bitácora. */
     async log(kind: string, detail: string): Promise<void> {
