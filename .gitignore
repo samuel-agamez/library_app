@@ -31,20 +31,46 @@ yarn-error.*
 *.pem
 
 # local env files
-.env*.local
+.env*
+!.env.example
 
 # typescript
 *.tsbuildinfo
-
-example
 
 # generated native folders
 /ios
 /android
 
-# Variables de entorno locales (la URL de tu API; la plantilla es .env.example)
-.env
+# Variables de entorno locales (la plantilla es .env.example)
+.env*
 !.env.example
+
+# Cobertura y cachés
+coverage/
+.eslintcache
+
+# Credenciales móviles / Firebase (la app no debe hablar con Firebase)
+*.keystore
+google-services.json
+GoogleService-Info.plist
+
+# Artefactos de compilación móvil
+*.apk
+*.aab
+*.ipa
+
+# Firebase CLI (si algún día se usa)
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+
+# Si algún día despliegas la web
+.vercel/
+
+# Sistema y editor (.vscode sí se comparte en este repo)
+Thumbs.db
+Desktop.ini
+.idea/
 
 # Documentos institucionales y archivos temporales de Office/Windows: no se publican
 *.docx
