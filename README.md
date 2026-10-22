@@ -23,15 +23,15 @@ Funciona sin conexión: lee de SQLite, encola solicitudes y las envía cuando vu
 
 ## Configurar la URL de la API
 
-Copia `.env.example` a `.env` (ya viene creado apuntando a la API del curso):
+Copia `.env.example` a `.env` (ya viene creado apuntando a tu API en Vercel):
 
 ```env
-EXPO_PUBLIC_API_URL=https://library-api-beige-seven.vercel.app
+EXPO_PUBLIC_API_URL=https://libraryapi-six.vercel.app
 ```
 
 | Dónde corre la app | Valor |
 |---|---|
-| API desplegada | `https://library-api-beige-seven.vercel.app` |
+| Tu API en Vercel | `https://libraryapi-six.vercel.app` |
 | Teléfono físico con API local | `http://IP-DE-TU-PC:3000` (misma red Wi-Fi y `npm run dev:lan` en la API) |
 | Emulador Android | `http://10.0.2.2:3000` |
 | Simulador iOS / web | `http://localhost:3000` |
@@ -49,12 +49,12 @@ Atajos: `npm run android`, `npm run ios`, `npm run web`.
 
 ## Cuentas de prueba
 
-Con la API del curso:
+Con tu API desplegada:
 
 | Rol | Usuario | Clave |
 |---|---|---|
-| Estudiante | `estudiante@gmail.com` | `tdea2026` |
-| Bibliotecario | `admin@gmail.com` | `tdea2026` |
+| Estudiante | `estudiante@biblioteca.com` | `tdea2026` |
+| Bibliotecario | `admin@biblioteca.com` | `tdea2026` |
 
 También puedes crear tus propias cuentas en la API (`npm run create-user`). En tu propia API no hay usuarios escritos en el código.
 
